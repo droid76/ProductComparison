@@ -1,0 +1,180 @@
+<html>
+<head>
+
+<link href="css/compare.css" rel="stylesheet" type="text/css" />
+<title>Tablet Compare </title>
+</head>
+<body>
+
+
+<div id="top-title">
+        <div>
+        	<h3 style = "text-align : center">Compare Tablets </h1>
+        </div>
+        
+        <div class="product">
+		<br/>
+        	
+			</div>
+			
+			<div class = "brand1select">
+			<h4> Select Brand1 </h4> 
+			
+			<form method = "post" action = "action.php">
+            	<select id = "brand1" onchange = "f1(1)" >
+                <option value = "default" selected="selected"> Enter brand name </option>
+                <option value = "Apple"> Apple </option>
+                <option value = "Dell"> Dell </option>
+                
+                </select>
+            </form>
+            </div>
+           
+           <div class = "brand2select">
+           <h4> Select Brand2 </h4> 
+			<form method = "post" action = "action.php">
+            	<select id = "brand2" onchange = "f1(2)">
+                <option value = "default" selected = "selected">Enter brand name </option>
+                <option value = "Apple"> Apple </option>
+                <option value = "Dell"> Dell </option>
+               
+                </select>
+            </form>
+            </div>
+			<br/>
+			<br/>
+			<h4 id="subbox1" style = "display: none;margin-left:75px"> Select Model 1<h4/>
+			<form method = "post" id="tablet1" action = "action.php" style = "display: none;">
+				<select id="tablet1sel" style = "margin-left:75px">
+				 </select>
+			</form>
+			<h4 id="subbox2" style = "display: none;margin-top:-75px;margin-left:800px"> Select Model 2 </h4>
+			<form method = "post" id="tablet2"  action = "action.php" style = "display: none; right:25%">
+				<select id="tablet2sel" style= "margin-left:800px">
+				 </select>
+			</form>
+			<form method = "post" id="tablet2"  action = "action.php">
+				<div class = "compareButton"><input type = "button" value = "compare" name = "button1" onclick = "compare()"/>
+				 </div>
+			</form>
+			
+			</div>
+	       <script type = "text/javascript">
+			var brands=["Apple","Dell"];
+			var phones={Apple:["Apple iPad mini Wi-Fi","Apple iPad Air 2"],Dell:["Dell Venue 7","Dell Venue 8"]};
+			
+			
+			var values={Apple:["imini","iair2"],Dell:["ven7","ven8"]};
+			var ph={1:["tablet1","tablet1sel","brand1","subbox1"],2:["tablet2","tablet2sel","brand2","subbox2"]}
+			
+			
+		      function f1(x)
+		      { 
+		      	var a  = document.getElementById(ph[x][2]);
+				var brand1=a.options[a.selectedIndex].value;
+		        
+				
+				if (brand1 == "default")
+				{
+					document.getElementById(ph[x][3]).style.display="none";
+					document.getElementById(ph[x][0]).style.display="none";
+		           document.getElementById(ph[x][1]).innerHTML="";
+				   
+				}
+				else
+				{
+				
+					for(var i in brands)
+					{
+					
+						if (brands[i]==brand1)
+						{
+							document.getElementById(ph[x][3]).style.display="block";
+							document.getElementById(ph[x][0]).style.display="block";
+							var x = document.getElementById(ph[x][1]);
+							x.innerHTML="";
+							var options=phones[brands[i]];
+							var val=values[brands[i]];
+							for(var j in options)
+							{
+								var option = document.createElement("option");
+								option.text = options[j];
+								option.value=val[j];
+								x.add(option, x[0]);
+							}
+						}
+					}
+				}
+		       
+		       }
+             function compare()
+			   {
+			   var a  = document.getElementById(ph[1][2]);
+				var a=a.options[a.selectedIndex].value;
+				var b  = document.getElementById(ph[2][2]);
+				var b=b.options[b.selectedIndex].value;
+			     if(a=="default"||b=="default")
+				 {
+                            alert("Please select two tablets");
+                            return;
+                   }    
+			   	    var optionvalue1 = document.getElementById("tablet1sel").value;
+                    var optionvalue2 = document.getElementById("tablet2sel").value;
+                    var table = document.createElement('table');
+				    table.className = "blueshine";
+				    table.id = "comparetable";
+				    var row1 = document.createElement("tr");
+    				var cell1 = document.createElement("td");
+    				cell1.className = "blank";
+    				row1.appendChild(cell1);
+    				table.appendChild(row1);
+    				var head1 = document.createElement("th");
+    				var head2 = document.createElement("th");
+    				  head1.innerHTML = document.getElementById("tablet1sel").options[document.getElementById("tablet1sel").selectedIndex].innerHTML;
+    				head2.innerHTML = document.getElementById("tablet2sel").options[document.getElementById("tablet2sel").selectedIndex].innerHTML;
+    				row1.appendChild(head1);
+    				row1.appendChild(head2);
+    			
+           var tabletSpecs = ["Dimensions/Weight","SIM","Display Type/Size","Resolution","OS","CPU","RAM","Internal/External","Primary Camera","Secondary Camera","Battery"];
+    				
+					var imini = ["200 x 134.7 x 7.2 mm/308 g","No","7.9 inch","768 x 1024 pixels ","iOS 6, upgradable to iOS 9.1","Dual-core 1 GHz Cortex-A9","512 MB","16/32/64 GB","5 MP","1.2 MP","4490 mAh"];
+    				var iair2 = ["240 x 169.5 x 6.1 mm/437 g","Yes","9.7 inches","1536 x 2048 pixels","iOS 8.1, upgradable to iOS 8.4","Triple-core 1.5 GHz","2 GB","16/64/128 GB,","8 MP","1.2 MP","8826 mAh"];
+					var ven7 = ["193 x 118 x 9.6 mm/234 g","Yes","7.0 inch","800 x 1280 pixels","Android OS, v4.2.2","Dual-core 1.6 GHz","2 GB","16 GB","3.15 MP","0.3 MP","4100  mAh"];
+    				var ven8 = ["212 x 130 x 9.8 mm /292  g","Yes","8.0 inch","800 x 1280 pixels","Android OS, v4.2.2","Dual-core 2 GHz","2 GB","16/32 GB","5 MP","2 MP","4100 mAh"];
+    				
+             if(optionvalue1=="imini"){optionvalue1 = imini;}
+                  else if(optionvalue1=="iair2"){optionvalue1 = iair2;}
+                  else if(optionvalue1=="ven7"){optionvalue1 = ven7;}
+                  else if(optionvalue1=="ven8"){optionvalue1 = ven8;}
+                  
+                  
+                   if(optionvalue2=="imini"){optionvalue2 = imini;}
+                  else if(optionvalue2=="iair2"){optionvalue2 = iair2;}
+                  else if(optionvalue2=="ven7"){optionvalue2 = ven7;}
+                  else if(optionvalue2=="ven8"){optionvalue2 = ven8;}
+                 
+                
+                   for(var i in tabletSpecs)
+    				{
+                           
+                         var row = document.createElement("tr");
+                         var td = document.createElement("td");
+                         td.className = "rowTitle";
+                         td.innerHTML = tabletSpecs[i];
+                         row.appendChild(td);
+                         var td1 =  document.createElement("td");
+                         var td2 = document.createElement("td");
+                         td1.innerHTML = optionvalue1[i];
+                         td2.innerHTML = optionvalue2[i];
+                         row.appendChild(td1);
+                         row.appendChild(td2);
+                         table.appendChild(row);
+
+    				}
+  				  document.body.appendChild(table);
+			  }
+
+			    
+			</script>
+ </body>       	
+</html>

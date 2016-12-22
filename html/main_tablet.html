@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+	<html>
+	 <head>
+	 	<title> Tablet list </title>
+	 <link href="css/main_tabletcss.css" rel="stylesheet" type="text/css" />
+    </head>
+     <body class = "no-touch">
+       <h1 style = "text-align:center;font-family: YanoneKaffeesatzRegular"> CHECK OUT OUR TABLETS </h1>
+      <div class="wrap">
+    
+  <!-- Define all of the tiles: -->
+  <div class="box">
+    <div class="boxInner">
+      
+	  <a href="tabdisplay.html" target = "_blank"> <img id = "Apple iPad mini Wi-Fi" src="images/imini.jpg"/></a>
+      <div class="titleBox">Apple iPad mini Wi-Fi</div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="boxInner">
+      
+	   <a href="tabdisplay.html" target = "_blank"> <img id = "Apple iPad Air 2" src="images/iair2.jpg" /></a>
+      <div class="titleBox">Apple iPad Air 2</div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="boxInner">
+     
+		<a href="tabdisplay.html" target = "_blank">  <img id = "Dell Venue 7" src="images/ven7.jpg" /></a>
+      <div class="titleBox">Dell Venue 7</div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="boxInner">
+    
+	  <a href="tabdisplay.html" target = "_blank">   <img id = "Dell Venue 8" src="images/ven8.jpg" /></a>
+      <div class="titleBox">Dell Venue 8</div>
+    </div>
+  </div>
+  
+ </div>
+      <h1 style = "text-align:center">COMPARISION<h1/>
+      
+      <form method = "post" id="phone2"  action = "action.php">
+        <input type = "button" value = "compare" name = "button1" onclick = "location.href = 'tablet_compare.html'" style = "margin-left:45%"/>
+         </select>
+      </form>
+	  
+	  
+<script>
+ var imgs = document.images ;
+ for(var i =0; i < imgs.length; i++)
+ {
+	imgs[i].onclick = function(e){
+		localStorage.setItem("tablet", e.target.id);
+	}
+ }
+ 
+ </script> 
+	  
+	  
+     </body>
+   </html>

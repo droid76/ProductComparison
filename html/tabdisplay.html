@@ -1,0 +1,101 @@
+<html>
+<head>
+<title> tab features</title>
+</head>
+<body>
+<style>
+html
+{
+	background-image: url('images/background3.jpg');
+}
+
+table, tr, td
+{
+	border : 1px solid #9fb6c8;
+	text-align : center;
+}
+table
+{
+	width : 1000px;
+	height : 1000px;
+	padding : 5px;
+	color: #0c3053;
+	font-weight: 600;
+	background-color: #f0f1f1;
+	
+}
+</style>
+<h1 style = "text-align: center"> Features of the tablet </h1>
+<script>
+if(typeof(Storage) != "undefined")
+{
+var choice = localStorage.getItem("tablet");
+
+}
+else
+{
+	alert("no local storage");
+}
+document.writeln("<h1 style = 'text-align: center'> The Selected Tab is : " + choice + "</h1>");
+
+
+			
+			 var tabletSpecs = ["Dimensions/Weight","SIM","Display Type/Size","Resolution","OS","CPU","RAM","Internal/External","Primary Camera","Secondary Camera","Battery"];
+    				
+					var imini = ["200 x 134.7 x 7.2 mm/308 g","No","7.9 inch","768 x 1024 pixels ","iOS 6, upgradable to iOS 9.1","Dual-core 1 GHz Cortex-A9","512 MB","16/32/64 GB","5 MP","1.2 MP","4490 mAh"];
+    				var iair2 = ["240 x 169.5 x 6.1 mm/437 g","Yes","9.7 inches","1536 x 2048 pixels","iOS 8.1, upgradable to iOS 8.4","Triple-core 1.5 GHz","2 GB","16/64/128 GB,","8 MP","1.2 MP","8826 mAh"];
+					var ven7 = ["193 x 118 x 9.6 mm/234 g","Yes","7.0 inch","800 x 1280 pixels","Android OS, v4.2.2","Dual-core 1.6 GHz","2 GB","16 GB","3.15 MP","0.3 MP","4100  mAh"];
+    				var ven8 = ["212 x 130 x 9.8 mm /292  g","Yes","8.0 inch","800 x 1280 pixels","Android OS, v4.2.2","Dual-core 2 GHz","2 GB","16/32 GB","5 MP","2 MP","4100 mAh"];
+			var tablets=[imini,iair2,ven7,ven8];
+            
+			var table = document.createElement('table');
+			var rhead = document.createElement('tr');
+			var specs = document.createElement('td');
+			specs.innerHTML = "specifications";
+			specs.style.backgroundColor =  '#b8cee2' ;
+			var values = document.createElement('td');
+			values.innerHTML = "values";
+			values.style.backgroundColor =  '#b8cee2' ;
+			rhead.appendChild(specs);
+			rhead.appendChild(values);
+			
+			table.appendChild(rhead);
+			
+			for(var i=0; i < tabletSpecs.length;i++)
+    				{
+                           
+                         var row = document.createElement("tr");
+                         var td = document.createElement("td");
+                         td.innerHTML = tabletSpecs[i];
+                         row.appendChild(td);
+                         var td1 =  document.createElement("td");
+                         switch(choice)
+						 {
+						 case "Apple iPad mini Wi-Fi":
+							td1.innerHTML = imini[i];
+							break;
+						case "Apple iPad Air 2":
+							td1.innerHTML = iair2[i];
+							break;
+						case "Dell Venue 7":
+							td1.innerHTML = ven7[i];
+							break;
+						case "Dell Venue 8":
+							td1.innerHTML = ven8[i];
+							break;
+						
+						 }
+						 
+						 
+						 
+                         row.appendChild(td1);
+                         table.appendChild(row);
+
+    				}
+  				  document.body.appendChild(table);	
+</script>
+</body>
+</html>
+
+
+ 

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+	<html>
+	 <head>
+	 	<title> Laptops list </title>
+	 <link href="css/main_laptopcss.css" rel="stylesheet" type="text/css" />
+    </head>
+     <body class = "no-touch">
+      <h1 style = "text-align:center;font-family: YanoneKaffeesatzRegular"> CHECK OUT OUR LAPTOPS </h1>
+      <div class="wrap">
+    
+  <!-- Define all of the tiles: -->
+  <div class="box">
+    <div class="boxInner">
+      
+	   <a href="laptopdisplay.html" target = "_blank"> <img id = "Dell Inspiron 3442" src="images/3442.jpg"/></a>
+      <div class="titleBox">Dell Inspiron 3442</div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="boxInner">
+     
+	    <a href="laptopdisplay.html" target = "_blank">  <img id = "Dell Vostro 3546" src="images/3546.jpg" /></a>
+      <div class="titleBox">Dell Vostro 3546</div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="boxInner">
+     
+	   <a href="laptopdisplay.html" target = "_blank">  <img id = "HP Pavilion 15-ab032TX" src="images/ab3.jpg" /></a>
+      <div class="titleBox">HP Pavilion 15-ab032TX</div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="boxInner">
+     
+	   <a href="laptopdisplay.html" target = "_blank"> <img id = "HP 15-ac033TX" src="images/ac033.jpg" /></a>
+      <div class="titleBox">HP 15-ac033TX</div>
+    </div>
+  </div>
+ 
+
+  
+</div>
+      <h1 style = "text-align:center">COMPARISION<h1/>
+      
+      <form method = "post" id="phone2"  action = "action.php">
+        <input type = "button" value = "compare" name = "button1" onclick = "location.href = 'laptop_compare.html'" style = "margin-left:45%"/>
+         </select>
+      </form>
+	  
+	  
+	  
+<script>
+ var imgs = document.images ;
+ for(var i =0; i < imgs.length; i++)
+ {
+	imgs[i].onclick = function(e){
+		localStorage.setItem("laptop", e.target.id);
+	}
+ }
+ 
+ </script> 
+	  
+
+     </body>
+   </html>

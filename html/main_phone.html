@@ -1,0 +1,129 @@
+<html>
+<head>
+
+<link href="css/main_phonecss.css" rel="stylesheet" type="text/css" />
+<title> Phone list </title>
+</head>
+<body class = "no-touch">
+<div id="top-title">
+        
+       	<div>
+        	<h1 style = "text-align : center">CHECK SPECIFICATIONS INDIVIDUALLY OR COMPARE</h1>
+        	
+        </div>
+        
+       <div class="wrap">
+    
+  <!-- Define all of the tiles: -->
+  <div class="box">
+    <div class="boxInner">
+      
+	   <a href="phonedisplay.html" target = "_blank"> <img id ="Samsung Galaxy S6" src="images/s6.jpg"/></a>
+      <div class="titleBox">Samsung Galaxy S6</div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="boxInner">
+     
+	   <a href="phonedisplay.html" target = "_blank">  <img id ="Samsung Galaxy E7"  src="images/e7.jpg" /></a>
+      <div class="titleBox">Samsung Galaxy E7</div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="boxInner">
+      
+	   <a href="phonedisplay.html" target = "_blank">  <img id = "Samsung Core Prime" src="images/core.jpg" /></a>
+      <div class="titleBox">Samsung Core Prime</div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="boxInner">
+
+	   <a href="phonedisplay.html" target = "_blank">  <img id = "Moto X2" src="images/x2.jpg" /></a>
+      <div class="titleBox">  Moto X2</div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="boxInner">
+     
+	   <a href="phonedisplay.html" target = "_blank">  <img id = "Moto E2" src="images/e2.jpg" /></a>
+      <div class="titleBox">Moto E2</div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="boxInner">
+      
+	   <a href="phonedisplay.html" target = "_blank"> <img id = "Moto G3" src = "images/g3.jpg" /></a>
+      <div class="titleBox">Moto G3</div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="boxInner">
+     
+	   <a href="phonedisplay.html" target = "_blank"> <img id = "Xiaomi Mi4" src="images/mi4.jpg" /></a>
+      <div class="titleBox">Xiaomi Mi4</div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="boxInner">
+      
+	    <a href="phonedisplay.html" target = "_blank"> <img id = "Xiaomi Mi4i" src="images/mi4i.jpg" /></a>
+      <div class="titleBox">Xiaomi Mi4i</div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="boxInner">
+     
+	    <a href="phonedisplay.html" target = "_blank">  <img id = "Xiaomi Redmi 2" src="images/redmi2.jpg" /></a>
+      <div class="titleBox">Xiaomi Redmi 2</div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="boxInner">
+      
+	   <a href="phonedisplay.html" target = "_blank"> <img id = "Micromax Silver 5" src="images/silver.jpg" /></a>
+      <div class="titleBox">Micromax Silver 5</div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="boxInner">
+     
+	   <a href="phonedisplay.html" target = "_blank"> <img id = "Micromax Nitro" src="images/nitro.jpg" /></a>
+      <div class="titleBox">Micromax Nitro </div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="boxInner">
+      
+	   <a href="phonedisplay.html" target = "_blank"><img id = "Micromax Unite3" src="images/unite3.jpg" /></a>
+      <div class="titleBox">Micromax Unite3</div>
+    </div>
+  </div>
+  
+</div>
+		
+        	<h1 style = "text-align:center">COMPARISION<h1/>
+			
+			<form method = "post" id="phone2"  action = "action.php">
+				<input type = "button" value = "compare" name = "button1" onclick = "location.href = 'phone_compare.html'" style = "margin-left:45%"/>
+				 </select>
+			</form>
+			
+			
+<script>
+ var imgs = document.images ;
+ for(var i =0; i < imgs.length; i++)
+ {
+	imgs[i].onclick = function(e){
+		localStorage.setItem("phone", e.target.id);
+	}
+ }
+ 
+ </script> 
+			
+			
+			
+			
+			
+ </body>       	
+</html>

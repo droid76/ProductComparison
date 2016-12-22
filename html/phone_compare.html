@@ -1,0 +1,204 @@
+<html>
+<head>
+
+<link href="css/compare.css" rel="stylesheet" type="text/css" />
+<title>Phones Compare</title>
+</head>
+<body>
+
+
+<div id="top-title">
+        <div>
+        	<h3 style = "text-align : center">Compare Phones</h1>
+        </div>
+        
+        <div class="product">
+		<br/>
+        	
+			</div>
+			
+			<div class = "brand1select">
+			<h4> Select Brand1 </h4> 
+			
+			<form method = "post" action = "action.php">
+            	<select id = "brand1" onchange = "f1(1)" >
+                <option value = "default" selected="selected"> Enter brand name </option>
+                <option value = "Samsung"> Samsung </option>
+                <option value = "Xiaomi"> Xiaomi </option>
+                <option value = "Motorola"> Motorola </option>
+                <option value = "Micromax"> Micromax </option>
+                </select>
+            </form>
+            </div>
+           
+           <div class = "brand2select">
+           <h4> Select Brand2 </h4> 
+			<form method = "post" action = "action.php">
+            	<select id = "brand2" onchange = "f1(2)">
+                <option value = "default" selected = "selected">Enter brand name </option>
+                <option value = "Samsung"> Samsung </option>
+                <option value = "Xiaomi"> Xiaomi </option>
+                <option value = "Motorola"> Motorola </option>
+                <option value = "Micromax"> Micromax </option>
+                </select>
+            </form>
+            </div>
+			<br/>
+			<br/>
+			<h4 id="subbox1" style = "display: none;margin-left:75px"> Select Model 1<h4/>
+			<form method = "post" id="phone1" action = "action.php" style = "display: none;">
+				<select id="phone1sel" style = "margin-left:75px">
+				 </select>
+			</form>
+			<h4 id="subbox2" style = "display: none;margin-top:-75px;margin-left:800px"> Select Model 2 </h4>
+			<form method = "post" id="phone2"  action = "action.php" style = "display: none; right:25%">
+				<select id="phone2sel" style= "margin-left:800px">
+				 </select>
+			</form>
+			<form method = "post" id="phone2"  action = "action.php">
+				<div class = "compareButton"><input type = "button" value = "compare" name = "button1" onclick = "compare()"/>
+				 </div>
+			</form>
+			
+			</div>
+	       <script type = "text/javascript">
+			var brands=["Samsung","Xiaomi","Motorola","Micromax"];
+			var phones={Samsung:["Samsung Galaxy S6","Samsung Galaxy E7","Samsung Galaxy Core Prime"],Xiaomi:["Xiaomi Mi4","Xiaomi Mi4i","Xiaomi Redmi 2"],Motorola:["Motorola Moto X2","Motorola Moto G3","Motorola Moto E2"],Micromax:["Micromax Canvas Silver 5","Micromax Canvas Nitro 2","Micromax Unite3"]};
+			
+			
+			var values={Samsung:["s6","s7","core"],Xiaomi:["mi4","mi4i","redmi2"],Motorola:["x2","g3","e2"],Micromax:["silver","nitro","unite3"]};
+			var ph={1:["phone1","phone1sel","brand1","subbox1"],2:["phone2","phone2sel","brand2","subbox2"]}
+			
+			
+		      function f1(x)
+		      { 
+		      	var a  = document.getElementById(ph[x][2]);
+				var brand1=a.options[a.selectedIndex].value;
+		        
+				
+				if (brand1 == "default")
+				{
+					document.getElementById(ph[x][3]).style.display="none";
+					document.getElementById(ph[x][0]).style.display="none";
+		           document.getElementById(ph[x][1]).innerHTML="";
+				   
+				}
+				else
+				{
+				
+					for(var i in brands)
+					{
+					
+						if (brands[i]==brand1)
+						{
+							document.getElementById(ph[x][3]).style.display="block";
+							document.getElementById(ph[x][0]).style.display="block";
+							var x = document.getElementById(ph[x][1]);
+							x.innerHTML="";
+							var options=phones[brands[i]];
+							var val=values[brands[i]];
+							for(var j in options)
+							{
+								var option = document.createElement("option");
+								option.text = options[j];
+								option.value=val[j];
+								x.add(option, x[0]);
+							}
+						}
+					}
+				}
+		       
+		       }
+             function compare()
+			   {
+			   
+			   var a  = document.getElementById(ph[1][2]);
+				var a=a.options[a.selectedIndex].value;
+				var b  = document.getElementById(ph[2][2]);
+				var b=b.options[b.selectedIndex].value;
+			     if(a=="default"||b=="default")
+				 {
+                            alert("Please select two phones");
+                            return;
+                   }    
+			   	    var optionvalue1 = document.getElementById("phone1sel").value;
+                    var optionvalue2 = document.getElementById("phone2sel").value;
+                    var table = document.createElement('table');
+				    table.className = "blueshine";
+				    table.id = "comparetable";
+				    var row1 = document.createElement("tr");
+    				var cell1 = document.createElement("td");
+    				cell1.className = "blank";
+    				row1.appendChild(cell1);
+    				table.appendChild(row1);
+    				var head1 = document.createElement("th");
+    				var head2 = document.createElement("th");
+    				  head1.innerHTML = document.getElementById("phone1sel").options[document.getElementById("phone1sel").selectedIndex].innerHTML;
+    				head2.innerHTML = document.getElementById("phone2sel").options[document.getElementById("phone2sel").selectedIndex].innerHTML;
+    				row1.appendChild(head1);
+    				row1.appendChild(head2);
+    			
+            var phoneSpecs = ["Dimensions/Weight","SIM","Display Type/Size","Resolution","OS","CPU","GPU","RAM","Internal/External","Primary Camera","Secondary Camera","Battery","Price"];
+    				var s6 = ["5.65 x 2.78 x 0.27 in/138 g","Nano-SIM","Super AMOLED capacitive touchscreen/5.1 inches","1440 x 2560 pixels ","Android OS, v5.0.2 (Lollipop)","Quad-core 1.5 GHz Cortex-A53 & Quad-core 2.1 GHz Cortex-A57","Mali-T760MP8","3 GB","32/64/128 GB/No","16 MP, 5312 x 2988 pixels","5 MP","Non-removable Li-Ion 2550 mAh battery","INR 39,500"];
+    				var e7 = ["5.96 x 3.04 x 0.29 in/141 g","Nano-SIM","Super AMOLED capacitive touchscreen/5.5 inches","720 x 1280 pixels ","Android OS, v4.4 (Kitikat)","Quad-core 1.2 GHz Cortex-A53","Adreno 306","2GB","16GB/microSD","13 MP, 4128 x 3096 pixels","5 MP ","Non-removable Li-Ion 2950 mAh battery","INR 17,000"];
+    				var core = ["5.15 x 2.67 x 0.35 in/130g","Micro-SIM","Capacitive touchscreen/4.5 inches","480 x 800 pixels","Android OS, v4.4.4 (KitKat)","Quad-core 1.2 GHz Cortex-A53x","Adreno 306","1 GB","8GB/microSD","5 MP 2592 х 1944 pixels","2 MP","Li-Ion 2000 mAh battery","INR 9,800"];
+    				var mi4 = ["5.48 x 2.70 x 0.35 in/149 g","Micro-SIM"," IPS LCD capacitive touchscreen/5.0 inches","1080 x 1920 pixels ","Android OS, v4.4.3","Quad-core 2.5 GHz Krait 400","Adreno 330","3 GB","16/64 GB/No","13 MP, 4128 x 3096 pixels","8 MP","Non-removable Li-Ion 3080 mAh battery","INR 17,500"];
+    				var mi4i = ["5.44 x 2.74 x 0.31 in/130 g","Micro-SIM","IPS LCD capacitive touchscreen/5.0 inches","1080 x 1920 pixels ","Android OS, v5.0.2 (Lollipop)","Quad-core 1.7 GHz Cortex-A53 & quad-core 1.0 GHz Cortex-A53","Adreno 405","2 GB","16/32 GB/No","13 MP, 4128 x 3096 pixels","5 MP"," Non-removable Li-Ion 3120 mAh battery","INR 13,000"];
+    				var redmi2 = ["5.28 x 2.65 x 0.37 in/133 g","Micro-SIM","IPS LCD capacitive touchscreen/4.7 inches","720 x 1280 pixels","Android OS, v4.4.4 (KitKat)","Quad-core 1.2 GHz Cortex-A53","Adreno 306","1GB & 2GB","8/16 GB/microSD"," 8 MP, 3264 x 2448 pixels","2 MP","Li-Po 2200 mAh battery","INR 6,000"];
+    				var x2 = ["5.54 x 2.85 x 0.39 in/144 g","Nano-SIM","AMOLED capacitive touchscreen/5.2 inches","1080 x 1920 pixels ","Android OS, v4.4.4 (KitKat)","Quad-core 2.5 GHz Krait 400","Adreno 330","2GB","16/32/64 GB /No"," 13 MP, 4128 x 3096 pixels","2 MP","Non-removable Li-Ion 2300 mAh battery","INR 20,000"];
+    				var g3 = ["5.59 x 2.85 x 0.46 in/155 g","Micro-SIM","IPS LCD capacitive touchscreen/5.0 inches"," 720 x 1280 pixels ","Android OS, v5.1.1 (Lollipop)","Quad-core 1.4 GHz Cortex-A53","Adreno 306","1/2 GB","8/16 GB/microSD","13 MP, 4128 x 3096 pixels","5 MP","Non-removable Li-Ion 2470 mAh battery","INR 13,000"];
+    				var e2 = ["5.11 x 2.63 x 0.48 in/145 g","Micro-SIM","IPS LCD capacitive touchscreen/4.5 inches","540 x 960 pixels ","Android OS, v5.0.2 (Lollipop)","Quad-core 1.2 GHz Cortex-A7 - 3G model & Quad-core 1.2 GHz Cortex-A53-4G model","Adreno 302","1GB","8 GB/microSD","5 MP, 2592 х 1944 pixels","VGA","Li-Ion 2390 mAh battery","INR 7,000"];
+    				var silver = ["5.1 mm thickness/97 g","Nano-SIM","AMOLED capacitive touchscreen/4.8 inches","720 x 1280 pixels ","Android OS, v5.0.2 (Lollipop)","Quad-core 1.2 GHz Cortex-A53","Adreno 306","2 GB","16 GB/No","8 MP, 3264 x 2448 pixels","5 MP","Li-Po 2000 mAh battery","INR 17,000"];
+    				var nitro= [" 72.1x143.5x7.5 mm/143 g","Micro-SIM"," IPS LCD capacitive touchscreen/5.0 inches","720 x 1280 pixels ","Android OS, v4.4.2 (KitKat)","Octa-core 1.4 GHz Cortex-A7","Mali-450MP4","2 GB","16 GB/microSD","13 MP, 4128 x 3096 pixels","5 MP","Li-Ion 2400 mAh battery","INR 9,400"];
+    				var unite3 = ["5.65 x 2.78 x 0.27 in/151 g","Micro-SIM"," IPS LCD capacitive touchscreen/4.7 inches","480 x 800 pixels ","Android OS, v5.0.2 (Lollipop)","Quad-core 1.3 GHz Cortex-A7","Mali-400MP2","1 GB","8 GB/microSD","8 MP, 3264 x 2448 pixels","5 MP","Li-Ion 2000 mAh battery","INR 6,500"];
+             if(optionvalue1=="s6"){optionvalue1 = s6;}
+                  else if(optionvalue1=="e7"){optionvalue1 = e7;}
+                  else if(optionvalue1=="core"){optionvalue1 = core;}
+                  else if(optionvalue1=="mi4"){optionvalue1 = mi4;}
+                  else if(optionvalue1=="mi4i"){optionvalue1 = mi4i;}
+                  else if(optionvalue1=="redmi2"){optionvalue1 = redmi2;}
+                  else if(optionvalue1=="x2"){optionvalue1 = x2;}
+                  else if(optionvalue1=="g3"){optionvalue1 = g3;}
+                  else if(optionvalue1=="e2"){optionvalue1 = e2;}
+                  else if(optionvalue1=="silver"){optionvalue1 = silver;}
+                  else if(optionvalue1=="nitro"){optionvalue1 = nitro;}
+                  else if(optionvalue1=="unite3"){optionvalue1 = unite3;}
+                 
+                   if(optionvalue2=="s6"){optionvalue2 = s6;}
+              else if(optionvalue2=="e7"){optionvalue2 = e7;}
+                  else if(optionvalue2=="core"){optionvalue2 = core;}
+                  else if(optionvalue2=="mi4"){optionvalue2 = mi4;}
+                  else if(optionvalue2=="mi4i"){optionvalue2 = mi4i;}
+                  else if(optionvalue2=="redmi2"){optionvalue2 = redmi2;}
+                  else if(optionvalue2=="x2"){optionvalue2 = x2;}
+                  else if(optionvalue2=="g3"){optionvalue2 = g3;}
+                  else if(optionvalue2=="e2"){optionvalue2 = e2;}
+                  else if(optionvalue2=="silver"){optionvalue2 = silver;}
+                  else if(optionvalue2=="nitro"){optionvalue2 = nitro;}
+                  else if(optionvalue2=="unite3"){optionvalue2 = unite3;}
+                 
+                
+                   for(var i in phoneSpecs)
+    				{
+                           
+                         var row = document.createElement("tr");
+                         var td = document.createElement("td");
+                         td.className = "rowTitle";
+                         td.innerHTML = phoneSpecs[i];
+                         row.appendChild(td);
+                         var td1 =  document.createElement("td");
+                         var td2 = document.createElement("td");
+                         td1.innerHTML = optionvalue1[i];
+                         td2.innerHTML = optionvalue2[i];
+                         row.appendChild(td1);
+                         row.appendChild(td2);
+                         table.appendChild(row);
+
+    				}
+  				  document.body.appendChild(table);
+			  }
+
+			    
+			</script>
+ </body>       	
+</html>

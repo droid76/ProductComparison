@@ -1,0 +1,96 @@
+<html>
+<head>
+<title> Laptop features</title>
+</head>
+<body>
+<style>
+html
+{
+	background-image: url('images/background3.jpg');
+}
+table, tr, td
+{
+	border : 1px solid #9fb6c8;
+	text-align : center;
+}
+table
+{
+	width : 1000px;
+	height : 1000px;
+	padding : 5px;
+	color: #0c3053;
+	font-weight: 600;
+	background-color: #f0f1f1;
+	
+}
+</style>
+<h1 style = "text-align: center"> Features of the Laptop </h1>
+<script>
+if(typeof(Storage) != "undefined")
+{
+var choice = localStorage.getItem("laptop");
+
+}
+else
+{
+	alert("no local storage");
+}
+document.writeln("<h1 style = 'text-align: center'> The Selected Laptop is : " + choice + "</h1>");
+
+
+				var laptopSpecs = ["Dimensions/Weight","Display Size","Resolution","OS","CPU","GPU","RAM","STORAGE","Battery","Price"];
+			
+					var ac033 = ["38.43 x 25.46 x 2.43 cm/2.14 kg","15.6 inch","1366x768 pixels ","Windows 8.1 64bit","Intel Core i5 (5th Gen) 5200U","AMD Radeon R5 Series M330 Graphics 2 GB","4 GB DDR3","1TB HDD","4 cell","INR 45,900"];
+    				var ab032 = ["38.43 x 26.11 x 2.51 cm/2.29 kg","15.6 inch","1920x1080 pixels ","Windows 8.1 64bit","Intel Core i5 (5th Gen) 5200U","NVIDIA GeForce 940M 2 GB","8 GB DDR3","1TB HDD","4 cell","INR 56,000"];
+					var d3546 = ["38.14 x 26.75 x 2.56 cm/2.14 kg","15.6 inch","1366x768 pixels ","Ubuntu 64bit","Intel Core i5 4210U","NVIDIA GeForce GT 820M 2 GB","4 GB DDR3","500 GB HDD","4 cell","INR 37,600"];
+    				var d3442 = ["34.60 x 24.6 x 2.54 cm/2.5 kg","13.86 inch","1366x768 pixels ","Windows 8.1 64bit","Intel Core i3 4005U","Intel HD Graphics 4400","4 GB DDR3","500 GB HDD","4 cell","INR 31,000"];
+			var laptops=[ac033, ab032, d3546, d3442];
+            
+			var table = document.createElement('table');
+			var rhead = document.createElement('tr');
+			var specs = document.createElement('td');
+			specs.innerHTML = "specifications";
+			specs.style.backgroundColor =  '#b8cee2' ;
+			var values = document.createElement('td');
+			values.innerHTML = "values";
+			values.style.backgroundColor =  '#b8cee2' ;
+			rhead.appendChild(specs);
+			rhead.appendChild(values);
+			
+			table.appendChild(rhead);
+			
+			for(var i=0; i < laptopSpecs.length;i++)
+    				{
+                           
+                         var row = document.createElement("tr");
+                         var td = document.createElement("td");
+                         td.innerHTML = laptopSpecs[i];
+                         row.appendChild(td);
+                         var td1 =  document.createElement("td");
+                         switch(choice)
+						 {
+						 case "HP 15-ac033TX":
+							td1.innerHTML = ac033[i];
+							break;
+						case "HP Pavilion 15-ab032TX":
+							td1.innerHTML = ab032[i];
+							break;
+						case "Dell Vostro 3546":
+							td1.innerHTML = d3546[i];
+							break;
+						case "Dell Inspiron 3442":
+							td1.innerHTML = d3442[i];
+							break;
+						
+						 }
+						 
+						 
+						 
+                         row.appendChild(td1);
+                         table.appendChild(row);
+
+    				}
+  				  document.body.appendChild(table);	
+</script>
+</body>
+</html>
